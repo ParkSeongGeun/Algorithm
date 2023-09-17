@@ -1,12 +1,12 @@
 #include <iostream>
+#include <algorithm>
 #include <string>
 
 using namespace std;
 
 string  s;
-string  line = "--------------------------------------------------------------------------------";
+string line = "--------------------------------------------------------------------------------";
 int cnt;
-int check;
 
 int check_uni(string s)
 {
