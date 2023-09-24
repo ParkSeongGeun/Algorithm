@@ -1,37 +1,34 @@
 #include <iostream>
 #include <algorithm>
-
+#define ll long long
 using namespace std;
 
 int N;
-int temp;
+ll temp;
 
-unsigned long long gcd(int a, int b)
+ll gcd(ll a,ll b)
 {
-    if (b==0)
-        return a;
+    if (a % b==0)
+        return b;
     else
         return gcd(b, a % b);
 }
 
-unsigned long long result(int a, int b, int c)
+ll result(ll a, ll b)
 {
-    unsigned long long d = gcd(a, b);
-    unsigned long long cnt = (a * b) / d;
-    //cout << cnt<<"\n";
-    unsigned long long max_val = gcd(cnt, c);
-    //cout << (cnt *c)/max_val <<"\n";
-    return (cnt * c / max_val);
+    ll c = gcd(a, b);
+    ll cnt = (a * b) / c;
+    return (cnt);
 }
 
-unsigned long long go(int temp)
+ll go(ll temp)
 {
-    unsigned long long first = result(temp-2, temp-1, temp);
-    unsigned long long second = result(temp-3, temp-1, temp);
-    unsigned long long third = result(temp-3, temp-2, temp-1);
-    unsigned long long fourth = result(temp-3, temp-2, temp);
-    unsigned long long res1 = max(first, second);
-    unsigned long long res2 = max(third, fourth);
+    ll first = result(result(temp-2, temp-1), temp);
+    ll second = result(result(temp-3, temp-1), temp);
+    ll third = result(result(temp-3, temp-2), temp-1);
+    ll fourth = result(result(temp-3, temp-2), temp);
+    ll res1 = max(first, second);
+    ll res2 = max(third, fourth);
     return (res1 > res2) ? res1 : res2;
 }
 
