@@ -14,6 +14,9 @@ void merge(int start, int end)
     int left = start; 
     int right = mid + 1;
     int temp_index = start;
+    // count를 하는 과정 -> Inversion Count를 이용한
+    // merge하는 과정에서 수가 교차되는 지점에서 count++
+    // 기준은 병합 과정에서 오른쪽 수가 들어올 때로 설정
     long long count = 0;
 
     while (left <= mid && right <= end) // 합병 과정
@@ -53,11 +56,6 @@ void merge(int start, int end)
             res += count;
         }
     }
-    // 정렬된 거를 다시 합쳐줌
-    for(int i=start;i<=end;i++)
-    {
-        arr[i] = temp[i];
-    }
 }
 
 void merge_sort(int start, int end)
@@ -68,6 +66,11 @@ void merge_sort(int start, int end)
         merge_sort(start, mid);
         merge_sort(mid+1, end);
         merge(start, end);
+        // merge를 통해 생성된 temp를 다시 arr에 넣어주기
+         for(int i=start;i<=end;i++)
+        {
+            arr[i] = temp[i];
+        }
     }
     return ;
 }
