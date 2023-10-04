@@ -26,7 +26,7 @@ int main(){
     // for(int i=0;i<N;i++){
     //     cout << res[i] << " ";
     // }
-    // cout << "\n";
+    // cout << "\n";—
     for(int i=K;i<N;i++){
         res[i] = res[i-1] + arr[i] - arr[i-K];
     }
