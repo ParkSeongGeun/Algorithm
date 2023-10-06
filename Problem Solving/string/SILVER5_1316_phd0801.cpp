@@ -10,6 +10,9 @@ string s;
 vector< pair<char, int> > v;
 
 int main(){
+    ios_base :: sync_with_stdio(false); 
+    cin.tie(NULL); 
+    cout.tie(NULL); 
     char c = 'a';
     for(int i=0;i<26;i++){
         v.push_back(make_pair(c, 0));
