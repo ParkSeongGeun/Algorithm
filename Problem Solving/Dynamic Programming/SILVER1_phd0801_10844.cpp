@@ -33,6 +33,6 @@ int main(){
     for(int i=0;i<10;i++){
         res += dp[N-1][i];
     }
-    cout << res << "\n";
+    cout << res % 1000000000 << "\n";
     return 0;
 }
