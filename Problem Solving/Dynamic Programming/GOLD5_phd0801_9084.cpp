@@ -12,10 +12,10 @@ void go(){
         for(int j=arr[i]; j <= M; j++){
             dp[j] = dp[j] + dp[j-arr[i]];
         }
-        for(int q=1;q<=M;q++){
-            cout << dp[q] << " ";
-        }
-        cout << "\n";
+        // for(int q=1;q<=M;q++){
+        //     cout << dp[q] << " ";
+        // }
+        // cout << "\n";
     }
 }
 
