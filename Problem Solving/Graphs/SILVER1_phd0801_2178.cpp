@@ -14,14 +14,14 @@ int dy[4] = {-1,0,1,0};
 int dx[4] = {0,1,0,-1};
 queue< pair<int, int> > q;
 
-int BFS(int start_y, int start_x){
+void BFS(int start_y, int start_x){
     visited[start_y][start_x] = 1;
     q.push(make_pair(start_y, start_x));
     dist[start_y][start_x]++;
     while(!q.empty()){
         int y = q.front().first;
         int x = q.front().second;
-        cout << "y, x 좌표 -> " << y << " " << x << "\n";
+        //cout << "y, x 좌표 -> " << y << " " << x << "\n";
         q.pop();
         for(int i=0;i<4;i++){
             int ny = y+dy[i];
