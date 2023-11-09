@@ -40,7 +40,7 @@ int main(){
             else{
                 power = power + MAP[j];
             }
-            cout << "power : " << power << "\n";
+            //cout << "power : " << power << "\n";
         }
         while(item--){
             power *= 2;
