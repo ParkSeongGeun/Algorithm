@@ -53,12 +53,12 @@ int main()
             }
         }
     }
-    cout << minCost[1][N] << "\n";
-    for(int i=1;i<=N;i++){
-        for(int j=1;j<=N;j++){
-            cout << minCost[i][j] << " ";
-        }
-        cout << "\n";
-    }
+    // cout << minCost[1][N] << "\n";
+    // for(int i=1;i<=N;i++){
+    //     for(int j=1;j<=N;j++){
+    //         cout << minCost[i][j] << " ";
+    //     }
+    //     cout << "\n";
+    // }
     print_result(1, N);
 }
