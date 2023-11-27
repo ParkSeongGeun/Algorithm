@@ -49,6 +49,7 @@ int main()
                 if(q < minCost[i][j]){
                     minCost[i][j] = q;
                     S[i][j] = k;
+                    cout << "i , j : " << i << ", " << j << "\n";
                 }
             }
         }

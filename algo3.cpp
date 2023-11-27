@@ -1,90 +1,42 @@
-// See https://www.geeksforgeeks.org/program-nth-catalan-number/
-// for reference of below code.
- 
 #include <iostream>
-#include <vector>
 #include <algorithm>
 
 using namespace std;
- 
-// A function to find factorial of a given number
-unsigned long int factorial(unsigned int n)
-{
-    unsigned long int res = 1;
- 
-    // Calculate value of [1*(2)*---*(n-k+1)] / [k*(k-1)*---*1]
-    for (int i = 1; i <= n; ++i)
-    {
-        res *= i;
+
+int n;
+int map[101][101];
+int dp[101][101];
+
+int main(){
+    cin >> n;
+    for(int i=1;i<=n;i++){
+        for(int j=1;j<=n;j++){
+            cin >> map[i][j];
+        }
     }
- 
-    return res;
-}
- 
-unsigned long int binomialCoeff(unsigned int n, unsigned int k)
-{
-    unsigned long int res = 1;
- 
-    // Since C(n, k) = C(n, n-k)
-    if (k > n - k)
-        k = n - k;
- 
-    // Calculate value of [n*(n-1)*---*(n-k+1)] / [k*(k-1)*---*1]
-    for (int i = 0; i < k; ++i)
-    {
-        res *= (n - i);
-        res /= (i + 1);
+    for(int i=1;i<=n;i++){
+        dp[i][0] = 1;
     }
- 
-    return res;
-}
- 
- 
-// A Binomial coefficient based function to find nth catalan
-// number in O(n) time
-unsigned long int catalan(unsigned int n)
-{
-    // Calculate value of 2nCn
-    unsigned long int c = binomialCoeff(2*n, n);
- 
-    // return 2nCn/(n+1)
-    return c/(n+1);
-}
- 
-// A function to count number of BST with n nodes 
-// using catalan
-unsigned long int countBST(unsigned int n)
-{
-    // find nth catalan number
-    unsigned long int count = catalan(n);
- 
-    // return nth catalan number
-    return count;
-}
- 
-// A function to count number of binary trees with n nodes 
-unsigned long int countBT(unsigned int n)
-{
-    // find count of BST with n numbers
-    unsigned long int count = catalan(n);
- 
-    // return count * n!
-    return count * factorial(n);
-}
- 
-// Driver Program to test above functions
-int main()
-{
- 
-    int count1,count2, n = 4;
- 
-    // find count of BST and binary trees with n nodes
-        count1 = countBST(n);
-        count2 = countBT(n); 
-     
-    // print count of BST and binary trees with n nodes
-    cout<<"Count of BST with "<<n<<" nodes is "<<count1<<endl;
-        cout<<"Count of binary trees with "<<n<<" nodes is "<<count2;
- 
-    return 0;
+    for(int i=1;i<=n;i++){
+        dp[0][i] = 1;
+    }
+    for(int i=1;i<=n;i++){
+        for(int j=1;j<=n;j++){
+            dp[i][j] = 1;
+            if(i>1&&j>1){
+                if(map[i-1][j-1]==map[i][j]&&map[i-1][j]!=map[i][j]&&map[i][j-1]!=map[i][j]){
+                    dp[i][j] = min(dp[i-1][j-1], min(dp[i][j-1], dp[i-1][j]))+1;
+                }
+                else{
+                    dp[i][j] = dp[i-1][j-1];
+                }
+            }
+        }
+    }
+    for(int i=0;i<=n;i++){
+        for(int j=0;j<=n;j++){
+            cout << dp[i][j] << " ";
+        }
+        cout << "\n";
+    }
 }
