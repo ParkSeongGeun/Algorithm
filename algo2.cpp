@@ -24,6 +24,7 @@ int main(){
 			}
 			else{
 				MAP[i][j] = min(MAP[i-1][j], min(MAP[i-1][j-1], MAP[i][j-1]))+1;
+				if(MAP[i-1][j])
 			}
 		}
 	}
