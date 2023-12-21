@@ -19,22 +19,17 @@ int main(){
         s.push_back(s1);
     }
     for(int i=0; i< s.size(); i++){
-        size_t pos1, pos2;
+        // 반례
         if(cut[0].length() + cut[1].length() > s[i].length()){
             cout << "NE" <<"\n";
             continue;
         }
-        pos1 = s[i].find(cut[0]);
-        if(pos1 != 0){
-            cout << "NE" <<"\n";
-            continue;
+        if(cut[0] == s[i].substr(0, cut[0].size()) && cut[1] == s[i].substr(s[i].size() - cut[1].size(), s[i].size())){
+            cout << "DA" << "\n";
         }
-        pos2 = s[i].substr(s[i].size()-cut[1].size(), s[i].size()).find(cut[1]);
-        if(pos2 != 0){
-            cout << "NE" <<"\n";
-            continue;
+        else{
+            cout << "NE" << "\n";
         }
-        cout << "DA" <<"\n";
     }
     return 0;
 }
