@@ -1,3 +1,9 @@
 .vscode/
-.DS_STORE
 .dSYM
+
+*
+!*/
+!*.*
+**/tempCodeRunnerFile*
+.DS_Store
+compile_flags.txt
