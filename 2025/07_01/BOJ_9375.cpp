@@ -25,11 +25,10 @@ int main() {
     }
 
     for (pair<string, int> p : mp) {
-      cout << p.first << ", " << p.second << "\n";
+      // cout << p.first << ", " << p.second << "\n";
     }
 
     int ans = 1;
-    int temp = (mp.size() - 1);
     for (pair<string, int> p : mp) {
       ans *= (p.second + 1);
     }
