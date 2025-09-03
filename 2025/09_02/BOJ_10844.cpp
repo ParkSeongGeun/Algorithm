@@ -5,22 +5,34 @@
 using namespace std;
 
 int a;
-vector<int> v(101);
+long long dp[101][10];
+int MOD = 1000000000;
 
-int go(int num) {
-    if (v[num] != 0) {
-        return v[num];
-    }
-    
-    if (num==1) {
-        return v[num] = 9;
+void go() {
+    // dp 초기화
+    for(int i=1;i<=9;i++){
+        dp[1][i] = 1;
     }
 
-    if (num==2) {
-        return v[num] = 17;
+    for(int j=2;j<=a;j++) {
+        for(int i=0;i<=9;i++){
+            if (i==0) {
+                dp[j][i] = dp[j-1][i+1] % MOD;
+            } else if (i==9) {
+                dp[j][i] = dp[j-1][i-1] % MOD;
+            } else {
+                dp[j][i] = (dp[j-1][i+1] + dp[j-1][i-1]) % MOD;
+            }
+        }
     }
 
-    return v[num] = (go(num - 1) + go(num - 2)) % 1,000,000,000;
+    long long sum = 0;
+    for(int i=0;i<=9;i++){
+        sum += dp[a][i];
+    }
+
+    cout << sum % MOD << "\n";
+    return;
 }
 
 int main() {
@@ -28,5 +40,6 @@ int main() {
     cin.tie(NULL);
     cout.tie(NULL);
     cin >> a;
-    cout << go(a) << "\n";
+    go();
+    return 0;
 }
