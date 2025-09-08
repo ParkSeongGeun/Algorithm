@@ -1,16 +1,13 @@
 #include <iostream>
+
 using namespace std;
 
 int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    
     int N;
     cin >> N;
     
-    int count[10001] = {0};  // 1~10,000 범위
-    
-    // 입력받으면서 바로 카운트 (배열에 저장 안 함!)
+    int count[10001] = {0};
+
     for(int i = 0; i < N; i++) {
         int num;
         cin >> num;
